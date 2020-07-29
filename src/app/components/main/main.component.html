@@ -1,0 +1,91 @@
+<div class="container ">
+    <form [formGroup]="formGroup$">
+        <div class=row>
+
+            <div class="col-lg-12 ">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" formControlName="title">
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" formControlName="description">
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">completed</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" formControlName="completed">
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">completedAt</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" formControlName="completedAt">
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+
+        <div class="col-lg-12">
+            <button class="btn btn-success" [disabled]="!formGroup$.valid" (click)="Submit()">{{(updateIndex == null)? 'Submit' : 'Update'}}</button>
+        </div>
+
+    </form>
+
+    <br>
+    <br>
+
+    <div *ngIf="allData.length">
+        <table class="table table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Completed</th>
+                    <th scope="col">CompletedAt</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of allData; let i = index">
+                    <td>{{d?.title}}</td>
+                    <td>{{d?.description}}</td>
+                    <td>{{d?.completed}}</td>
+                    <td>{{d?.completedAt}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="edit(d, i)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="delete(d, i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
