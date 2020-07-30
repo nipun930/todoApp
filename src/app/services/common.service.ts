@@ -22,7 +22,6 @@ export class CommonService {
   update(obj, index): Observable<any>{
     let data = JSON.parse(localStorage.data);
     data[index] = obj;
-    console.log(index, obj)
     localStorage.setItem('data', JSON.stringify(data));
     return of(data);
   }

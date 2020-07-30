@@ -35,7 +35,6 @@ export class MainComponent implements OnInit {
   }
 
   edit(obj, index) {
-    console.log('data to edit', obj);
     this.formGroup$.patchValue({
       'title': obj.title,
       'description': obj.description,
@@ -46,7 +45,6 @@ export class MainComponent implements OnInit {
   }
 
   delete(obj, index) {
-    console.log('data to delete', obj);
     this._commonService.delete(index).subscribe(res => {
       this.allData = res;
      });
